@@ -53,7 +53,7 @@
 
 &emsp;&emsp;熟悉了正则表达式的设计哲学后，我们再来从总体上看看正则表达式的规则，将它以语法树的形式展现出来：
 
-![正则表达式规则树](https://img-blog.csdnimg.cn/20181109132609156.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NhZ2l0dGFyaXVzX1dhcnJpb3I=,size_16,color_FFFFFF,t_70)
+![正则表达式规则树](https://github.com/SuperSurfing/Design-Pattern-and-Architecture/blob/master/Regular%20Expression%20for%20Python/Images/R.E..png?raw=true)
 
 <font size=4 face="微软雅黑" color=""></font>
 <font size=4 face="微软雅黑" color=""></font>
