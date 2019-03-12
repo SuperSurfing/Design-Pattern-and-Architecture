@@ -41,11 +41,12 @@
 
 除了以上的通用方法，还有一些小技巧（详见 [其他技巧](#其他技巧)）：  
 
-1. Debug - callstack
-2. Abrreviation Table
-3. UML Graph
-4. Demo
-5. Rebuild
+1. Debug，查看 CallStack
+2. 建立 Abrreviation Table
+3. 画 UML Graph 和 WorkFlow Graph
+4. 研究 Demo
+5. Rebuild，修改代码并观察结果
+6. 使用 Depends.exe 查看 dll 的导出接口
 
 
 
@@ -228,6 +229,60 @@ I/O模块 | 文件读写、应用层到内核层的I/O
 - [Code-Reading Tools](https://www.spinellis.gr/ismr/tools/indexw.htm)
 
 当然，如果有大批量定制化的需要，也可以自己动手，用 python 编写一个“正则表达”过滤的小程序。  
+
+
+#### OpenGrok
+
+OpenGrok 提供了一种 web app 的代码阅读方式（跨平台），它的最大好处是显示 target 所在的 Function Name 。其他的特性可以参考 [RTFSC with OpenGrok](https://mazhuang.org/2016/12/14/rtfsc-with-opengrok/) 。  
+
+##### 安装
+
+参考 [How to setup OpenGrok](https://github.com/oracle/opengrok/wiki/How-to-setup-OpenGrok) 和 [win7 安装 OpenGrok](https://blog.csdn.net/finewind/article/details/47362525)：  
+
+第一步：下载并安装 [JAVA JDK8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)，然后设置环境变量
+
+```
+JAVA_HOME: C:\Program Files\Java\jdk1.8.0_191
+JRE_HOEME: C:\Program Files\Java\jre1.8.0_191
+```
+
+在命令行中输入“java -version”即可查看版本信息，以验证是否安装成功。
+
+
+第二步：下载并解压安装 [TomCat](http://tomcat.apache.org/) ，然后设置环境变量   
+
+```
+C:\Program Files\Java\apache-tomcat-9.0.13\bin\startup.bat
+```
+
+注意：要以“管理员身份运行” tomcat，此时访问 localhost:8080 可以打开 tomcat 首页
+
+第三步： 下载并解压安装 [ctags-win32](https://github.com/universal-ctags/ctags-win32/releases)，
+
+第四步： 下载并解压安装 [opengrok](https://oracle.github.io/opengrok/)
+
+第五步： 在 OpenGrok 安装目录下新建目录 data 和 source （可以放在其他地方），再将 OpenGrok\bin\source.war 拷贝到 tomcat\whatapps\ 目录下。此时启动 tomcat ，访问 localhost:8080/source 可以打开 OpenGrok 。
+
+第六步：输入如下命令
+
+```
+java -Xmx524m -jar E:\Code\OpenGrok\opengrok-1.1-rc80\lib\opengrok.jar -W
+E:\Code\OpenGrok\opengrok-1.1-rc80\data\configuration.xml -c
+E:\Code\OpenGrok\ctags2018\ctags.exe -P -S -v -s E:\Code\AI\source -d
+E:\Code\OpenGrok\opengrok-1.1-rc80\data
+```
+
+第七步：参考 [RTFSC with OpenGrok](https://mazhuang.org/2016/12/14/rtfsc-with-opengrok/) 修改 tomcat。
+
+
+
+#### Understand
+
+参考 [Understand 安装](https://my.oschina.net/krysl/blog/2070243)
+
+
+
+
 
 ### Reference
 
